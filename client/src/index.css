@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+*{
+  font-family: "Outfit", sans-serif;
+  
+  
+  
+}
+
+@theme{
+  --color-primary:#07e8e4;
+  --color-secondary:#0a0a0a;
+  --color-accent:#9d4edd;
+  --color-silvertext:#e0e0e0;
+
+}
+
+/* Primary: Neon Cyan #07e8e4 (glowing, futuristic feel)
+
+Secondary: Deep Space Black #0a0a0a
+
+Accent: Electric Purple #9d4edd
+
+Text: Light Silver #e0e0e0 */
+
+
+.reset-tailwind, .reset-tailwind *{
+  all: revert !important
+}
+
+.cl-drawerRoot{
+  z-index: 10;
+  
+}
