@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Sparkles } from "lucide-react";
+import { Image, Sparkles, Download } from "lucide-react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -7,6 +7,22 @@ import axios from "axios";
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const GenerateImages = () => {
+
+  const downloadImage = () => {
+  try {
+    const downloadUrl = content.replace("/upload/", "/upload/fl_attachment/");
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = `ai-image-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (err) {
+    toast.error("Download failed");
+  }
+};
+  
   const imageStyles = [
     "Realistic",
     "Ghibli",
@@ -177,9 +193,23 @@ const GenerateImages = () => {
             </p>
           </div>
         </div>):(
-          <div className="h-full mt-3">
-            <img src={content} alt="image" className="w-full h-full"/>
-          </div>
+          <div className="h-full mt-3 relative group">
+
+  <img
+    src={content}
+    alt="image"
+    className="w-full h-full rounded-lg"
+  />
+
+  {/* Download Button Overlay */}
+  <button
+    onClick={downloadImage}
+    className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transition"
+  >
+    <Download className="w-5 h-5 text-white" />
+  </button>
+
+</div>
         )}
         
       </div>
