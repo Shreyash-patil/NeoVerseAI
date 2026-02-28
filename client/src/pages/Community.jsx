@@ -1,11 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useUser, SignIn, useAuth } from "@clerk/clerk-react";
 import { dummyPublishedCreationData } from "../assets/assets";
-import { Heart } from "lucide-react";
+import { Heart, Download } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+
+const downloadImage = async (url, prompt) => {
+  try {
+    // Convert Cloudinary URL to forced download URL
+    const downloadUrl = url.replace("/upload/", "/upload/fl_attachment/");
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = `${prompt?.slice(0, 20) || "creation"}.png`;
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (err) {
+    toast.error("Download failed");
+  }
+};
 
 const Community = () => {
   const [creations, setCreations] = useState([]);
@@ -105,6 +122,13 @@ const Community = () => {
                       ? "fill-red-500 text-red-600"
                       : "text-white"
                   }`}
+                />
+
+                <Download
+                  onClick={() =>
+                    downloadImage(creation.content, creation.prompt)
+                  }
+                  className="min-w-5 h-5 hover:scale-110 cursor-pointer text-white hover:text-cyan-400 transition"
                 />
               </div>
             </div>
