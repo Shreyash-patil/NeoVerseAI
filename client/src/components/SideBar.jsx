@@ -136,7 +136,7 @@ const SideBar = ({ sidebarProp, setSidebarProp }) => {
 
   return (
     <div
-      className={`w-60 bg-transparent backdrop-blur-lg border-r border-gray-800 flex flex-col justify-between items-center max-sm:absolute top-15 bottom-0 ${
+      className={`w-60 bg-transparent backdrop-blur-lg border-r border-gray-800 flex flex-col justify-between items-center max-sm:absolute top-15 bottom-0 z-1 ${
         sidebarProp ? "translate-x-0" : "max-sm:-translate-x-full"
       } transition-all duration-300 ease-in-out`}
     >
