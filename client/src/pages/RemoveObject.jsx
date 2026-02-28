@@ -97,7 +97,7 @@ const RemoveObject = () => {
             />
 
             {/* File Name */}
-            <span className="px-3 py-2 text-sm text-gray-400 truncate flex-1">
+            <span className="px-3 py-2 text-sm text-gray-400 truncate flex-1 min-w-0 max-w-[200px]">
               {fileName}
             </span>
 
