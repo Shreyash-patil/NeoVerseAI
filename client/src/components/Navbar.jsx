@@ -51,12 +51,12 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex ">
-              <button
+              {/* <button
                 className="text-white px-5 cursor-pointer"
                 onClick={openSignIn}
               >
                 Sign in
-              </button>
+              </button> */}
               <button
                 onClick={openSignUp}
                 className="flex items-center gap-2 rounded-full text-sm cursor-pointer border-2 border-cyan-300 text-white  px-5 py-2.5"
